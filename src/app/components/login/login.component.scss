@@ -1,0 +1,37 @@
+section{
+    background-image: url(../../../assets/images/registerbackground.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+
+    
+}
+.section-layer{
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.63);
+    width: 100%;
+}
+form{
+    width: 40%;
+   margin-left: auto;
+  padding: 20px;
+  color: var(--rating-color);
+//  background-color: rgba(255, 255, 255, 0.3); /* Fallback */
+//   backdrop-filter: blur(10px);
+}
+h1{
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--main-color);
+    margin-left: auto;
+    width: fit-content;
+    margin-right: 13%;
+    padding-top: 5%;
+}
+h1 span{
+    color: var(--rating-color);
+}
+button{
+    border: none;
+    width: 100%;
+}

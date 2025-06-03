@@ -44,12 +44,21 @@ a:hover {
 .product {
   border-radius: 5px;
   border: solid 1px var(--main-color);
-  transition: box-shadow 0.5s;
+  transition: scale 0.5s;
   overflow: hidden;
+  cursor: pointer;
+}
+.product .btn-main{
+  transform: translateY(120%);
+  transition: transform .7s;
+}
+.product:hover .btn-main{
+  transform: translateY(0);
 }
 
 .product:hover {
-  box-shadow: 0 0 10px rgb(237, 27, 2);
+  scale: 1.05;
+  // box-shadow: 0 0 10px rgb(237, 27, 2);
 }
 
 .font-sm {

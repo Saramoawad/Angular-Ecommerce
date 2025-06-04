@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
 import { IProduct } from '../../core/interfaces/iproduct';
 import { NgClass } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 
 
@@ -12,14 +13,15 @@ import { NgClass } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit ,OnDestroy{
 
 //  private readonly _ProductsService= inject(ProductsService)
  private readonly _ProductsService=inject(ProductsService)
 
  productsList:IProduct[]=[] //will filled py products
+ getAllProductsSub !: Subscription
  ngOnInit(): void {
-   this._ProductsService.getAllProducts().subscribe({
+ this.getAllProductsSub=  this._ProductsService.getAllProducts().subscribe({
     next:(res)=>{
       console.log(res.data);
       this.productsList=res.data;
@@ -30,7 +32,7 @@ export class HomeComponent implements OnInit{
    })
  }
 
-
+// star rating
  getStars(rating: number): string[] {
   const fullStars = Math.floor(rating);
   const halfStar = rating - fullStars >= 0.5;
@@ -51,5 +53,11 @@ export class HomeComponent implements OnInit{
   return stars.map(s => `fas ${s}`);
 }
 
+// unsubscribe
+ngOnDestroy(): void {
+  
+  // unsubscribe obsrvable write ? null safty always here
+  this.getAllProductsSub?.unsubscribe()
 
+}
 }

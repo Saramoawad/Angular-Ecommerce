@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -11,13 +12,14 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
 
   //injection
   private readonly _AuthService=inject(AuthService);
   private readonly _Router=inject(Router);
   msgError:string="";
   isLoading:boolean=false;
+  registerSub !:Subscription
 
   // way1 --syntax form with formbuilder
     private readonly _FormBuilder=inject(FormBuilder);
@@ -50,7 +52,7 @@ export class RegisterComponent {
         //  console.log(this.registerForm)
         this.isLoading=true;
           console.log(this.registerForm.value);
-          this._AuthService.setRegisterForm(this.registerForm.value).subscribe({
+        this.registerSub=  this._AuthService.setRegisterForm(this.registerForm.value).subscribe({
             next:(res)=>{
               console.log(res);
               // this._Router.navigateByurl('/login')  way1
@@ -81,6 +83,14 @@ export class RegisterComponent {
       return null
     }else{
       return{mismatch:true}
+    }
+  }
+
+  // don't miss ? safty null operator
+  ngOnDestroy(): void {
+    {
+        this.registerSub?.unsubscribe()
+
     }
   }
 }

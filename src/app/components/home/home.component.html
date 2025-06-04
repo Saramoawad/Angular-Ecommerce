@@ -10,10 +10,18 @@
                 <div class="d-flex justify-content-between">
                     <span>{{product.price }}</span>
 
-                    <div>
+                    <!-- <div>
                         <span><i class="fas fa-star rating-color"></i></span>
                         <span class="text-muted">{{product.ratingsAverage}}</span>
-                    </div>
+                    </div> -->
+                        <div class="rating-stars text-warning">
+                        @for (star of getStars(product.ratingsAverage); track $index) {
+                            <i class="fas" [ngClass]="star"></i>
+                        }
+                        <small class="text-muted ms-1">({{ product.ratingsAverage.toFixed(1) }})</small>
+                        </div>
+
+
 
                 </div>
 

@@ -53,6 +53,21 @@ categoriesList:ICategory[]=[];
     },
     nav: false
   }
+customOptionsMain: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    autoplay:true,
+    autoplayTimeout:1000,
+    autoplayHoverPause:true,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+     items:1,
+    nav: false
+  }
+
 
  ngOnInit(): void {
   // get all product

@@ -1,3 +1,23 @@
+<!-- categories -->
+ <section class="my-3">
+    <h2>Popular Categories</h2>
+    <owl-carousel-o [options]="customOptionsCat">
+
+        @for (cat of categoriesList; track cat._id) {
+                <ng-template carouselSlide>
+
+                    <div>
+                        <img [src]="cat.image" height="250px" class="w-100" [alt]="cat.name">
+                        <h3 class="h6 text-main">{{cat.name}}</h3>
+                    </div>
+                </ng-template>
+            }
+
+     </owl-carousel-o>
+
+ </section>
+
+<!-- products -->
 <section>
     <h2 class="text-main fw-bolder">pupular products: </h2>
     <div class="row g-3">

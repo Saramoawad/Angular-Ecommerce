@@ -11,6 +11,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { BrandsComponent } from './components/brands/brands.component';
 import { authGuard } from './guards/auth.guard';
 import { logedGuard } from './guards/loged.guard';
+import { ProdDetailsComponent } from './components/prod-details/prod-details.component';
 
 export const routes: Routes = [
 
@@ -27,7 +28,8 @@ export const routes: Routes = [
         {path:'products',component:ProductComponent},
         {path:'categories',component:CategoriesComponent},
         {path:'brands',component:BrandsComponent},
-        {path:'cart',component:CartComponent}
+        {path:'cart',component:CartComponent},
+        {path:'prodDetails/:id',component:ProdDetailsComponent}
     ]},
     {path:'**' ,component:NotfoundComponent}
 ];

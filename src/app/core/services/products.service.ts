@@ -15,7 +15,7 @@ export class ProductsService {
   getAllProducts():Observable<any>{
     return this._HttpClient.get(`${environment.baseUrl}/api/v1/products`)
   }
-  getSpecificProduct(id:string):Observable<any>{
+  getSpecificProduct(id:string  | null):Observable<any>{
     return this._HttpClient.get(`${environment.baseUrl}/api/v1/products/${id}`)
   }
   

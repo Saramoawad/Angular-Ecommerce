@@ -1,0 +1,56 @@
+@if (detailsProduct) {
+
+
+    <section class="container mt-5">
+    <h1 class="text-center text-main my-2">Details Product</h1>
+    <div class="row align-items-center">
+        <div class="col-xl-3  h-100">
+            <div class=" h-100">
+                <owl-carousel-o [options]="customOptionsProdImgs" class="h-100 w-100">
+
+                     @for (img of productImgs; track $index) {
+                        <ng-template carouselSlide>
+
+                            <div class="h-100">
+                                <img [src]="img" class="w-100" [alt]="detailsProduct?.title">
+                                 <!-- <h3 class="h6 text-main">{{prod.title}}</h3> -->
+                           </div>
+                        </ng-template>
+                     }
+
+                </owl-carousel-o>
+            <!-- <img class="w-100" [src]=" detailsProduct.imageCover " [alt]="detailsProduct.title"> -->
+            </div>
+        </div>
+         <div class="col-xl-9">
+            <div >
+                <h2>{{detailsProduct.title}}</h2>
+                <p>{{detailsProduct.description}}</p>
+                <p>{{detailsProduct.category.name}}</p>
+                <!-- <h4>{{detailsProduct.brand.name}}</h4> -->
+                 <img class="brandImg" [src]=" detailsProduct.brand.image " [alt]="detailsProduct.title">
+                <div class="d-flex justify-content-between m-2">
+                    <span>{{detailsProduct.price }}</span>
+
+                    <!-- <div>
+                        <span><i class="fas fa-star rating-color"></i></span>
+                        <span class="text-muted">{{detailsProduct.ratingsAverage}}</span>
+                    </div> -->
+                        <div class="rating-stars text-warning">
+                        @for (star of getStars(detailsProduct.ratingsAverage); track $index) {
+                            <i class="fas" [ngClass]="star"></i>
+                        }
+                        <small class="text-muted ms-1">({{ detailsProduct.ratingsAverage.toFixed(1) }})</small>
+                        </div>
+
+
+
+                </div>
+                <button class="btn-main w-100">Add To Cart</button>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+}

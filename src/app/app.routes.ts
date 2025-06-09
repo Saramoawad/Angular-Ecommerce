@@ -12,6 +12,7 @@ import { BrandsComponent } from './components/brands/brands.component';
 import { authGuard } from './guards/auth.guard';
 import { logedGuard } from './guards/loged.guard';
 import { ProdDetailsComponent } from './components/prod-details/prod-details.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 export const routes: Routes = [
 
@@ -19,7 +20,8 @@ export const routes: Routes = [
         children:[
         {path:'',redirectTo:'login',pathMatch:'full'},
         {path:'login',component:LoginComponent},
-        {path:'register',component:RegisterComponent}
+        {path:'register',component:RegisterComponent},
+        {path:'forget',component:ForgetPasswordComponent},
     ]
     },
         {path:'', component:BlankLayoutComponent,canActivate:[authGuard],children:[

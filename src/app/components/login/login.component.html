@@ -36,14 +36,17 @@
             </div>
         }
     </div>
-    
-    <button  class="btn-main" type="submit">login
+    <div>
+                <button  class="btn-main" type="submit">login
 
-        @if (isLoading) {
-            <span><i class="fas fa-spin fa-spinner"></i></span>
+                    @if (isLoading) {
+                        <span><i class="fas fa-spin fa-spinner"></i></span>
 
-        }
-    </button>
+                    }
+                </button>
+                <a class=" link-primary d-block pt-2 " routerLink="/forget">Forget Password?</a>
+
+    </div>
     @if(msgError){
     <p class="alert alert-danger w-50 m-0">{{msgError}}</p>
     }

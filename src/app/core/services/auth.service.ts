@@ -37,4 +37,15 @@ export class AuthService {
     //call api remove token
     this._Router.navigate(['/login']);
   }
+
+  // forget pass
+  setEmailVerify(data:object):Observable<any>{
+    return this._HttpClient.post(`${environment.baseUrl}/api/v1/auth/forgotPasswords` , data)
+  }
+   setCodeVerify(data:object):Observable<any>{
+    return this._HttpClient.post(`${environment.baseUrl}/api/v1/auth/verifyResetCode` , data)
+  }
+   setResetPass(data:object):Observable<any>{
+    return this._HttpClient.put(`${environment.baseUrl}/api/v1/auth/resetPassword` , data)
+  }
 }

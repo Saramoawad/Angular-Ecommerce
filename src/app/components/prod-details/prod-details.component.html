@@ -12,7 +12,7 @@
                         <ng-template carouselSlide>
 
                             <div class="h-100">
-                                <img [src]="img" class="w-100" [alt]="detailsProduct?.title">
+                                <img [src]="img" class="w-100" [alt]="detailsProduct.title">
                                  <!-- <h3 class="h6 text-main">{{prod.title}}</h3> -->
                            </div>
                         </ng-template>
@@ -29,7 +29,7 @@
                 <p>{{detailsProduct.category.name}}</p>
                 <!-- <h4>{{detailsProduct.brand.name}}</h4> -->
                  <img class="brandImg" [src]=" detailsProduct.brand.image " [alt]="detailsProduct.title">
-                <div class="d-flex justify-content-between m-2">
+                <div class="d-flex justify-content-between m-2 ">
                     <span>{{detailsProduct.price }}</span>
 
                     <!-- <div>
@@ -46,7 +46,7 @@
 
 
                 </div>
-                <button class="btn-main w-100">Add To Cart</button>
+                <button class="btn-main w-100">Add To Cart</button> 
 
             </div>
         </div>

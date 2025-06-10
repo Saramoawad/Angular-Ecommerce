@@ -14,12 +14,13 @@ export class ForgetPasswordComponent {
   private readonly _Router = inject(Router)
   step:number=1;
    verifyEmail: FormGroup=new FormGroup({
-    email :new FormControl(null,[Validators.required , Validators.email])
+   email :new FormControl(null,[Validators.required , Validators.email])
   })
   verifyCode: FormGroup=new FormGroup({
     resetCode :new FormControl(null,[Validators.required , Validators.pattern(/^[0-9]{6}$/)])
   })
    resetPassword: FormGroup=new FormGroup({
+       email :new FormControl(null,[Validators.required , Validators.email]),
        newPassword: new FormControl(null,[Validators.required,Validators.pattern(/^\w{6,}$/ )])
   })
 
@@ -43,7 +44,7 @@ export class ForgetPasswordComponent {
     this._AuthService.setCodeVerify(this.verifyCode.value).subscribe({
       next:(res)=>{
         console.log(res)
-        if(res.statuss ==='success'){
+        if(res.status ==='Success'){
           this.step=3;
         }
       },

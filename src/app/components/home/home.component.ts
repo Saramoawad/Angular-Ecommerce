@@ -1,18 +1,20 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
 import { IProduct } from '../../core/interfaces/iproduct';
-import { NgClass } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { CategoriesService } from '../../core/services/categories.service';
 import { ICategory } from '../../core/interfaces/icategory';
 import {CarouselModule, OwlOptions} from 'ngx-owl-carousel-o'
 import { RouterLink } from '@angular/router';
+import { SearchPipe } from '../../core/pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-home',
-  imports: [  NgClass, CarouselModule,RouterLink],
+  imports: [  NgClass,FormsModule, CarouselModule,RouterLink, CurrencyPipe,  SearchPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -24,7 +26,8 @@ export class HomeComponent implements OnInit ,OnDestroy{
 
  productsList:IProduct[]=[]; //will filled py products
 categoriesList:ICategory[]=[];
- getAllProductsSub !: Subscription
+ getAllProductsSub !: Subscription;
+ text:string='';
 
 
   customOptionsCat: OwlOptions = {
